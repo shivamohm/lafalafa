@@ -18,7 +18,8 @@ $options = array(""=>"--Select--","Y"=>"Active", "N"=>"In-Active");
 		<legend><?php echo __('Edit Task'); ?></legend>
     <?php
 		echo $this->Form->input('id', array('type' => 'hidden', 'value'=>$Tasks['Task']['id']));
-		echo $this->Form->input('user_id', array('type' => 'hidden', 'value'=>$this->UserAuth->getGroupId()));
+		echo $this->Form->input('group_id', array('type' => 'hidden', 'value'=>$this->UserAuth->getGroupId()));
+		echo $this->Form->input('user_id', array('type' => 'hidden', 'value'=>$this->UserAuth->getUserId()));
 		echo $this->Form->input('user_name', array('type' => 'hidden', 'value'=>$this->UserAuth->getGroupName()));
 		echo $this->Form->input('title');
 		echo $this->Form->input('desc');

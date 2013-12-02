@@ -6,24 +6,26 @@
 		
 	</ul>
 </div>
-<div class="tasks form">
-<?php echo $this->Form->create('Task');?>
 <?php 
 $options = array(""=>"--Select--","Y"=>"Active", "N"=>"In-Active");
 ?>
-<?php #echo $this->Form->create('User', array('action' => 'login')); ?>
+<div class="tasks form">
+	<?php echo $this -> Form -> create('Task',array('action'=>'add'));?>
 	<fieldset>
-		<legend><?php echo __('Add Task'); ?></legend>
-	<?php
-		echo $this->Form->input('user_id', array('type' => 'hidden', 'value'=>$this->UserAuth->getGroupId()));
-		echo $this->Form->input('user_name', array('type' => 'hidden', 'value'=>$this->UserAuth->getGroupName()));
-		echo $this->Form->input('title');
-		echo $this->Form->input('desc');
-	echo $this->Form->input('status', array('options' => $options, 'default' => '--Select--'));
-		
-	
-		#echo $this->Form->input('comments');
-	?>
+		<legend>
+			<?php echo __('Add Task');?>
+		</legend><?php # echo $this -> element('vendorsteps');?>
+		<?php
+			#echo $userId 	= $this->UserAuth->getUserId();
+			#echo $groupId = $this->UserAuth->getGroupId();
+			echo $this->Form->input('group_id', array('type' => 'hidden', 'value'=>$this->UserAuth->getGroupId()));
+			echo $this->Form->input('user_id', array('type' => 'hidden', 'value'=>$this->UserAuth->getUserId()));
+			echo $this->Form->input('user_name', array('type' => 'hidden', 'value'=>$this->UserAuth->getGroupName()));
+			echo $this->Form->input('title');
+			echo $this->Form->input('desc');
+			
+			echo $this->Form->input('status', array('options' => $options, 'default' => '--Select--'));
+		?>
 	</fieldset>
-<?php echo $this->Form->end(__('Submit'));?>
+<?php echo $this->Form->end(__('save'));?>
 </div>

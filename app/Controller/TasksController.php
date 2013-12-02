@@ -4,7 +4,19 @@ class TasksController extends AppController {
 	var $helpers = array('Html', 'Form');
 	
 	public function index(){
-		$this->set('tasks', $this->Task->find('all',  array('order' => array('id DESC') ))); 
+        $ord 		= array("Task.id" => "DESC");
+        $userId 	= $this->UserAuth->getUserId();
+        $groupId = $this->UserAuth->getGroupId();
+        if($groupId == 2){
+			$finalCond	= array('Task.user_id' => $userId,'Task.group_id' => $groupId );
+			}else{
+				$finalCond	= array();
+		}
+        $this->paginate = array('conditions' => $finalCond, 'order' => $ord);
+        
+        #$this->paginate = array("order" => $ord);
+		#$this->set('tasks', $this->Task->find('all',  array('order' => array('id DESC') ))); 
+		$this->set('tasks', $this->paginate());
 	}
 		
 	public function add() {
