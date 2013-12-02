@@ -13,9 +13,7 @@
 </div>
 
 <div class="vendors index">
-	<?php if(empty($tasks)): ?> 
-		There are no tasks in this list 
-	<?php else: ?>
+	
 	<h2>Task</h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
@@ -30,6 +28,13 @@
 		<th>Modified</th-->
 		<th>Actions</th>
 	</tr>
+	<?php if(empty($tasks)): ?> 
+		
+		<tr>
+			<td colspan="5">There are no tasks in this list </td>
+			
+		</tr>
+	<?php else: ?>
 	<?php foreach ($tasks as $task): ?>
 		<tr>
 			<td><input type="checkbox" name="chk1[]" id="chk1[]" value="lksjdsadsad"  > </td>
@@ -49,6 +54,7 @@
 		</tr>
 		
 		<?php endforeach; ?> 
+		<?php endif; ?>
 	</table>
 	 <?php 
 		echo $this->Form->end();
@@ -67,6 +73,6 @@
 		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
 	 ?>
 	</div>
-	<?php endif; ?>
+	
 </div>
 
